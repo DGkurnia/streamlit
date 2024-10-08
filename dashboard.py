@@ -23,7 +23,7 @@ waxdf = pd.read_csv('aqinsc/wanshouxigong-c.csv')
 
 
 #Persiapan penyatuan data (12 dataset ini adalah dataset kota Beijing)
-beijingdf = pd.concat([aotizdf, changdf, dingdf, dongdf, guadf, gucdf, huadf, nonzhadf, shundf, tiadf, waldf, waxdf], index = False)
+beijingdf = pd.concat([aotizdf, changdf, dingdf, dongdf, guadf, gucdf, huadf, nonzhadf, shundf, tiadf, waldf, waxdf], index = True)
 
 
 #Persiapan kepala
@@ -69,7 +69,7 @@ safety_limits = {
 #Keterangan (1. a adalah inepeksi PM2.5 b adalah PM10 2. kode an adalah anual kode ma adalah nilai maksimal)
 #Grafik pengecekan partikulat
 fig = px.line(hasil, x='peta waktu', y=['PM2.5', 'PM10'],
-              labels={'Nilai': 'Concentration', 'peta waktu': 'Tanggal'},
+              labels={'Nilai': 'Kadar Partikulat', 'peta waktu': 'Tanggal'},
               title='Inspeksi Partikulat')
 #Inspeksi Batas Aman
 for pollutant, limit in safety_limits.items():
