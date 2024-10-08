@@ -5,6 +5,13 @@ import matplotlib.pyplot as plt
 import streamlit as st
 import plotly.express as px
 import datetime
+import warnings
+warnings.filterwarnings('ignore')
+
+#Persiapan kepala
+st.title('Dashboard Inspeksi Kualitas Udara')
+st.set_page_config(page_title="Dashboard Kualitas Udara", layout="wide")
+st.write("Data Ini adalah hasil Inspeksi Kualitas udara Beijing.")
 
 
 #Persiapan dataset (dari Aotizhongxin sampai Wanshouxigong)
@@ -25,15 +32,9 @@ waxdf = pd.read_csv('aqinsc/wanshouxigong-c.csv')
 #Persiapan penyatuan data (12 dataset ini adalah dataset kota Beijing)
 beijingdf = pd.concat([aotizdf, changdf, dingdf, dongdf, guadf, gucdf, huadf, nonzhadf, shundf, tiadf, waldf, waxdf], ignore_index = True)
 
-
-#Persiapan kepala
-st.title('Dashboard Inspeksi Kualitas Udara')
-st.set_page_config(page_title="Dashboard Kualitas Udara", layout="wide")
-st.write("Data Ini adalah hasil Inspeksi Kualitas udara Beijing.")
-
 #Persiapan filtrasi stasiun
 stasiun = beijingdf['station'].unique() #Penanda
-pilihan = st.sidebar.selectbox("Select Monitoring Station", stasiun)
+pilihan = st.sidebar.selectbox("Pilih statiun Pengawasan", stasiun)
 hasil = beijingdf[beijingdf['station'] == pilihan] #Filtrasi Stasiun
 
 #Nilai Kunci
