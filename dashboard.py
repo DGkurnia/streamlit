@@ -23,7 +23,7 @@ waxdf = pd.read_csv('aqinsc/wanshouxigong-c.csv')
 
 
 #Persiapan penyatuan data (12 dataset ini adalah dataset kota Beijing)
-beijingdf = pd.concat([aotizdf, changdf, dingdf, dongdf, guadf, gucdf, huadf, nonzhadf, shundf, tiadf, waldf, waxdf], index = True)
+beijingdf = pd.concat([aotizdf, changdf, dingdf, dongdf, guadf, gucdf, huadf, nonzhadf, shundf, tiadf, waldf, waxdf], ignore_index = True)
 
 
 #Persiapan kepala
