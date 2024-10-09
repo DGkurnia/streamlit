@@ -13,20 +13,33 @@ warnings.filterwarnings('ignore')
 st.set_page_config(page_title="Dashboard Kualitas Udara", layout="wide")
 st.title('Dashboard Inspeksi Kualitas Udara')
 st.write("Data Ini adalah hasil Inspeksi Kualitas udara Beijing.")
+#Jalur relatif data
+aotizpath = 'aqinsc/aotizhongxin-c.csv'
+changpath = 'aqinsc/changping-c.csv'
+dingpath = 'aqinsc/dingling-c.csv'
+dongpath = 'aqinsc/dongsi-c.csv'
+guapath = 'aqinsc/guanyuan-c.csv'
+gucpath = 'aqinsc/gucheng-c.csv'
+huapath = 'aqinsc/huairo-c.csv'
+nonpath = 'aqinsc/nonzhanguan-c.csv'
+shunpath = 'aqinsc/shunyi-c.csv'
+tiapath = 'aqinsc/tiantan-c.csv'
+walpath = 'aqinsc/wanliu-c.csv'
+waxpath = 'aqinsc/wanshouxigong-c.csv'
 
 #Persiapan dataset (dari Aotizhongxin sampai Wanshouxigong untuk persembunyiaan)
-aotizdf = pd.read_csv(os.getenv('aqinsc/aotizhongxin-c.csv'))
-changdf = pd.read_csv(os.getenv('aqinsc/changping-c.csv'))
-dingdf = pd.read_csv(os.getenv('aqinsc/dingling-c.csv'))
-dongdf = pd.read_csv(os.getenv('aqinsc/dongsi-c.csv'))
-guadf = pd.read_csv(os.getenv('aqinsc/guanyuan-c.csv'))
-gucdf = pd.read_csv(os.getenv('aqinsc/gucheng-c.csv'))
-huadf = pd.read_csv(os.getenv('aqinsc/huairo-c.csv')) #Orang jepang atau cina menyebutnya 'huairou'
-nonzhadf = pd.read_csv(os.getenv('aqinsc/nonzhanguan-c.csv'))
-shundf = pd.read_csv(os.getenv('aqinsc/shunyi-c.csv'))
-tiadf =  pd.read_csv(os.getenv('aqinsc/tiantan-c.csv'))
-waldf = pd.read_csv(os.getenv('aqinsc/wanliu-c.csv'))
-waxdf = pd.read_csv(os.getenv('aqinsc/wanshouxigong-c.csv'))
+aotizdf = pd.read_csv(os.getenv(aotizpath))
+changdf = pd.read_csv(os.getenv(changpath))
+dingdf = pd.read_csv(os.getenv(dingpath))
+dongdf = pd.read_csv(os.getenv(dongpath))
+guadf = pd.read_csv(os.getenv(guapath))
+gucdf = pd.read_csv(os.getenv(gucpath))
+huadf = pd.read_csv(os.getenv(huapath)) #Orang jepang atau cina menyebutnya 'huairou'
+nonzhadf = pd.read_csv(os.getenv(nonpath))
+shundf = pd.read_csv(os.getenv(shunpath))
+tiadf =  pd.read_csv(os.getenv(tiapath))
+waldf = pd.read_csv(os.getenv(walpath))
+waxdf = pd.read_csv(os.getenv(waxpath))
 
 #Persiapan penyatuan data (12 dataset ini adalah dataset kota Beijing)
 beijingdf = pd.concat([aotizdf, changdf, dingdf, dongdf, guadf, gucdf, huadf, nonzhadf, shundf, tiadf, waldf, waxdf], ignore_index = True)
