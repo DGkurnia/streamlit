@@ -14,19 +14,18 @@ st.set_page_config(page_title="Dashboard Kualitas Udara", layout="wide")
 st.title('Dashboard Inspeksi Kualitas Udara')
 st.write("Data Ini adalah hasil Inspeksi Kualitas udara Beijing.")
 #Jalur relatif data
-aotizpath = 'aqinsc/aotizhongxin-c.csv'
-changpath = 'aqinsc/changping-c.csv'
-dingpath = 'aqinsc/dingling-c.csv'
-dongpath = 'aqinsc/dongsi-c.csv'
-guapath = 'aqinsc/guanyuan-c.csv'
-gucpath = 'aqinsc/gucheng-c.csv'
-huapath = 'aqinsc/huairo-c.csv'
-nonpath = 'aqinsc/nonzhanguan-c.csv'
-shunpath = 'aqinsc/shunyi-c.csv'
-tiapath = 'aqinsc/tiantan-c.csv'
-walpath = 'aqinsc/wanliu-c.csv'
-waxpath = 'aqinsc/wanshouxigong-c.csv'
-
+aotizpath = st.secrets["data_paths"]["aotizpath"]
+changpath = st.secrets["data_paths"]["changpath"]
+dingpath = st.secrets["data_paths"]["dingpath"]
+dongpath = st.secrets["data_paths"]["dongpath"]
+guapath = st.secrets["data_paths"]["guapath"]
+gucpath = st.secrets["data_paths"]["gucpath"]
+huapath = st.secrets["data_paths"]["huapath"]
+nonpath = st.secrets["data_paths"]["nonpath"]
+shunpath = st.secrets["data_paths"]["shunpath"]
+tiapath = st.secrets["data_paths"]["tiapath"]
+walpath = st.secrets["data_paths"]["walpath"]
+waxpath = st.secrets["data_paths"]["waxpath"]
 #Persiapan dataset (dari Aotizhongxin sampai Wanshouxigong untuk persembunyiaan)
 aotizdf = pd.read_csv(os.getenv(aotizpath))
 changdf = pd.read_csv(os.getenv(changpath))
