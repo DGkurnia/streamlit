@@ -1,10 +1,11 @@
 #Persiapan impor perpustakaan
+import os
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import streamlit as st
 import plotly.express as px
-import datetime
+import seaborn as sns
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -13,20 +14,19 @@ st.set_page_config(page_title="Dashboard Kualitas Udara", layout="wide")
 st.title('Dashboard Inspeksi Kualitas Udara')
 st.write("Data Ini adalah hasil Inspeksi Kualitas udara Beijing.")
 
-#Persiapan dataset (dari Aotizhongxin sampai Wanshouxigong)
-aotizdf = pd.read_csv('aqinsc/aotizhongxin-c.csv')
-changdf = pd.read_csv('aqinsc/changping-c.csv')
-dingdf = pd.read_csv('aqinsc/dingling-c.csv')
-dongdf = pd.read_csv('aqinsc/dongsi-c.csv')
-guadf = pd.read_csv('aqinsc/guanyuan-c.csv')
-gucdf = pd.read_csv('aqinsc/gucheng-c.csv')
-huadf = pd.read_csv('aqinsc/huairo-c.csv')
-nonzhadf = pd.read_csv('aqinsc/nonzhanguan-c.csv')
-shundf = pd.read_csv('aqinsc/shunyi-c.csv')
-tiadf =  pd.read_csv('aqinsc/tiantan-c.csv')
-waldf = pd.read_csv('aqinsc/wanliu-c.csv')
-waxdf = pd.read_csv('aqinsc/wanshouxigong-c.csv')
-
+#Persiapan dataset (dari Aotizhongxin sampai Wanshouxigong untuk persembunyiaan)
+aotizdf = pd.read_csv(os.getenv('aqinsc/aotizhongxin-c.csv'))
+changdf = pd.read_csv(os.getenv('aqinsc/changping-c.csv'))
+dingdf = pd.read_csv(os.getenv('aqinsc/dingling-c.csv'))
+dongdf = pd.read_csv(os.getenv('aqinsc/dongsi-c.csv'))
+guadf = pd.read_csv(os.getenv('aqinsc/guanyuan-c.csv'))
+gucdf = pd.read_csv(os.getenv('aqinsc/gucheng-c.csv'))
+huadf = pd.read_csv(os.getenv('aqinsc/huairo-c.csv')) #Orang jepang atau cina menyebutnya 'huairou'
+nonzhadf = pd.read_csv(os.getenv('aqinsc/nonzhanguan-c.csv'))
+shundf = pd.read_csv(os.getenv('aqinsc/shunyi-c.csv'))
+tiadf =  pd.read_csv(os.getenv('aqinsc/tiantan-c.csv'))
+waldf = pd.read_csv(os.getenv('aqinsc/wanliu-c.csv'))
+waxdf = pd.read_csv(os.getenv('aqinsc/wanshouxigong-c.csv'))
 
 #Persiapan penyatuan data (12 dataset ini adalah dataset kota Beijing)
 beijingdf = pd.concat([aotizdf, changdf, dingdf, dongdf, guadf, gucdf, huadf, nonzhadf, shundf, tiadf, waldf, waxdf], ignore_index = True)
@@ -40,12 +40,12 @@ hasil = beijingdf[beijingdf['station'] == pilihan] #Filtrasi Stasiun
 st.header(f"Air Quality Metrics for {hasil}") #Hasil Pilihan Stasiun
 #Bagian Penampilan nilai metrik
 metrik = {
-    'Kadar PM2.5': hasil['PM2.5'].iloc[-1],
-    'Kadar PM10': hasil['PM10'].iloc[-1],
-    'Kadar Senyawa SO2': hasil['SO2'].iloc[-1],
-    'Kadar Senyawa NO2': hasil['NO2'].iloc[-1],
-    'Kadar Senyawa CO': hasil['CO'].iloc[-1],
-    'Kadar Senyawa oznon (O3)': hasil['O3'].iloc[-1],
+    'Kadar PM2.5 (mikrometer/m^3)': hasil['PM2.5'].iloc[-1],
+    'Kadar PM10 (mikrometer/m^3)': hasil['PM10'].iloc[-1],
+    'Kadar Senyawa SO2 (mikrometer/m^3)': hasil['SO2'].iloc[-1],
+    'Kadar Senyawa NO2 (mikrometer/m^3)': hasil['NO2'].iloc[-1],
+    'Kadar Senyawa CO (mikrometer/m^3)': hasil['CO'].iloc[-1],
+    'Kadar Senyawa oznon/(O3) (mikrometer/m^3)': hasil['O3'].iloc[-1],
     'Suhu (°C)': hasil['TEMP'].iloc[-1],
     'Tekanan (hPa)': hasil['PRES'].iloc[-1],
     'Nilai Kelembaban (°C)': hasil['DEWP'].iloc[-1],
