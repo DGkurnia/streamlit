@@ -9,10 +9,9 @@ import warnings
 warnings.filterwarnings('ignore')
 
 #Persiapan kepala
-st.title('Dashboard Inspeksi Kualitas Udara')
 st.set_page_config(page_title="Dashboard Kualitas Udara", layout="wide")
+st.title('Dashboard Inspeksi Kualitas Udara')
 st.write("Data Ini adalah hasil Inspeksi Kualitas udara Beijing.")
-
 
 #Persiapan dataset (dari Aotizhongxin sampai Wanshouxigong)
 aotizdf = pd.read_csv('aqinsc/aotizhongxin-c.csv')
